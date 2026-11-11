@@ -146,11 +146,11 @@ a:focus-visible, button:focus-visible { outline: 2px solid currentColor; outline
 .course { color: var(--muted); font-size: 0.82rem; white-space: nowrap; }
 .project-body { max-width: 70ch; }
 .project-body h4 { margin-top: 14px; font-size: 0.9rem; }
-.project-body ul { margin: 3px 0; padding-left: 1.25em; }
 .project-body p { white-space: pre-line; }
-.figures { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr)); gap: 16px; margin-top: 18px; }
+.project-body p + p { margin-top: 7px; }
+.figures { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr)); gap: 16px; margin-top: 6px; }
 figure { margin: 0; }
-figure img { display: block; width: 100%; height: auto; max-height: 500px; object-fit: contain; object-position: left; }
+figure img { display: block; border-radius: 3px; width: 100%; height: auto; max-height: 500px; object-fit: contain; object-position: left; }
 figcaption { margin-top: 4px; color: var(--muted); font-size: 0.82rem; }
 .footer { padding-block: 17px; border-top: 1px solid var(--line); font-size: 0.9rem; }
 
@@ -191,6 +191,7 @@ figcaption { margin-top: 4px; color: var(--muted); font-size: 0.82rem; }
   h2, h3, h4, .project-heading { break-after: avoid; }
   figure, .project:has(> .project-heading:only-child) { break-inside: avoid; }
   figure img { max-height: 3.5in; }
-  .figures { gap: 10pt; margin-top: 8pt; }
+  .figures { gap: 10pt; margin-top: 4pt; }
+  .project-body p + p { margin-top: 4pt; }
   p, li { widows: 2; orphans: 2; }
 }

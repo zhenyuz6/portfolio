@@ -33,15 +33,14 @@ function renderProject(project) {
   article.append(heading);
 
   const body = element("div", "", "project-body");
-  addTextSection(body, "Overview", project.summary);
-  if (project.contributions.length) {
-    const list = element("ul");
-    project.contributions.forEach((item) => list.append(element("li", item)));
-    body.append(element("h4", "My contribution"), list);
+  addTextSection(body, "Project Overview", project.summary);
+  if (project.design.length) {
+    body.append(element("h4", "System Design"));
+    project.design.forEach((paragraph) => body.append(element("p", paragraph)));
   }
-  addTextSection(body, "Results and current status", project.results);
 
   if (project.figures.length) {
+    body.append(element("h4", project.figureHeading || "Figures"));
     const figures = element("div", "", "figures");
     project.figures.forEach(({ src, alt, caption }) => {
       const figure = element("figure");
@@ -54,6 +53,8 @@ function renderProject(project) {
     });
     body.append(figures);
   }
+
+  addTextSection(body, "Results", project.results);
 
   const links = element("p", "", "project-links");
   addLinks(links, project.links);
