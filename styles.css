@@ -149,6 +149,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid currentColor; outline
 .project-body p { white-space: pre-line; }
 .project-body p + p { margin-top: 7px; }
 .figures { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr)); gap: 16px; margin-top: 6px; }
+#autonomous-driving .figures { grid-template-columns: minmax(0, 1fr); }
 figure { margin: 0; }
 figure img { display: block; border-radius: 3px; width: 100%; height: auto; max-height: 500px; object-fit: contain; object-position: left; }
 figcaption { margin-top: 4px; color: var(--muted); font-size: 0.82rem; }
