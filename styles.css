@@ -1,0 +1,196 @@
+:root {
+  color-scheme: light;
+  --ink: #152d2a;
+  --muted: #506762;
+  --paper: #f8f7f1;
+  --line: #cdd5c9;
+  --hero: #102d2a;
+  --hero-ink: #f5f7e9;
+  --accent: #cbe3a7;
+  --sans: Inter, "Segoe UI", Arial, sans-serif;
+  --serif: "Instrument Serif", Georgia, serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+[hidden] { display: none !important; }
+
+body {
+  margin: 0;
+  color: var(--ink);
+  background: var(--paper);
+  font: 16px/1.62 var(--sans);
+}
+
+h1, h2, h3, h4, p { margin: 0; }
+a { color: inherit; text-underline-offset: 0.17em; }
+a:focus-visible, button:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
+.wrap { width: min(1110px, calc(100% - 64px)); margin-inline: auto; }
+
+.skip-link {
+  position: absolute;
+  top: -80px;
+  left: 16px;
+  z-index: 2;
+  padding: 8px 12px;
+  color: var(--ink);
+  background: var(--paper);
+}
+
+.skip-link:focus { top: 12px; }
+
+.hero {
+  color: var(--hero-ink);
+  background-color: var(--hero);
+  background-image: linear-gradient(105deg, var(--hero) 34%, transparent 80%),
+    repeating-linear-gradient(126deg, transparent 0 53px, #96c2a61b 54px 55px);
+  border-bottom: 5px solid var(--accent);
+}
+
+.masthead {
+  min-height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  border-bottom: 1px solid #edf5df47;
+}
+
+.wordmark { font-size: 0.99rem; font-weight: 650; text-decoration: none; }
+.wordmark:hover { text-decoration: underline; }
+
+.print-button {
+  padding: 8px 15px;
+  border: 1px solid var(--accent);
+  border-radius: 4px;
+  color: var(--hero-ink);
+  background: var(--hero);
+  font: 600 0.86rem/1.45 var(--sans);
+  cursor: pointer;
+}
+
+.print-button:hover { color: var(--hero); background: var(--accent); }
+
+.intro { padding: 39px 0 48px; }
+.intro h1 {
+  font: 400 clamp(3.6rem, 9vw, 7.8rem)/0.88 var(--serif);
+  letter-spacing: -0.065em;
+}
+
+.affiliation {
+  margin-top: 21px;
+  color: var(--accent);
+  font-size: 0.94rem;
+  font-weight: 550;
+}
+
+.biography { max-width: 65ch; margin-top: 14px; }
+.profile-links, .project-links { display: flex; flex-wrap: wrap; gap: 6px 18px; margin-top: 12px; }
+
+.layout {
+  display: grid;
+  grid-template-columns: minmax(150px, 235px) minmax(0, 1fr);
+  gap: clamp(32px, 6vw, 86px);
+  align-items: start;
+  padding-block: 43px 58px;
+}
+
+.contents { position: sticky; top: 24px; max-height: calc(100vh - 48px); overflow: auto; }
+.contents h2 { font-size: 1.04rem; }
+.contents-group {
+  margin-top: 19px;
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.055em;
+  text-transform: uppercase;
+}
+
+.contents ul { padding: 0 4px; margin: 5px 0 0; list-style: none; }
+.contents a {
+  display: block;
+  padding-block: 4px;
+  color: var(--ink);
+  font-size: 0.85rem;
+  line-height: 1.42;
+  text-decoration-color: transparent;
+}
+
+.contents a:hover, .contents a:focus-visible { text-decoration-color: currentColor; }
+
+.draft-note {
+  margin-bottom: 24px;
+  padding: 8px 12px;
+  border-left: 3px solid #869d76;
+  color: var(--muted);
+  background: #edf0e5;
+  font-size: 0.88rem;
+}
+
+.project-group + .project-group { margin-top: 33px; }
+.project-group > h2 {
+  margin-bottom: 10px;
+  font: 400 clamp(2.1rem, 4.7vw, 3.35rem)/1.02 var(--serif);
+  letter-spacing: -0.042em;
+}
+
+.project {
+  border-top: 1px solid var(--line);
+  padding-block: 14px 16px;
+  scroll-margin-top: 20px;
+}
+
+.project:last-child { border-bottom: 1px solid var(--line); }
+.project:target { border-top-color: #457451; }
+.project-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 6px 24px; }
+.project h3 { font-size: 1.12rem; line-height: 1.36; }
+.course { color: var(--muted); font-size: 0.82rem; white-space: nowrap; }
+.project-body { max-width: 70ch; }
+.project-body h4 { margin-top: 14px; font-size: 0.9rem; }
+.project-body ul { margin: 3px 0; padding-left: 1.25em; }
+.project-body p { white-space: pre-line; }
+.figures { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr)); gap: 16px; margin-top: 18px; }
+figure { margin: 0; }
+figure img { display: block; width: 100%; height: auto; max-height: 500px; object-fit: contain; object-position: left; }
+figcaption { margin-top: 4px; color: var(--muted); font-size: 0.82rem; }
+.footer { padding-block: 17px; border-top: 1px solid var(--line); font-size: 0.9rem; }
+
+@media (max-width: 750px) {
+  .wrap { width: calc(100% - 36px); }
+  .intro h1 { font-size: clamp(3rem, 12vw, 5.8rem); }
+  .intro { padding-block: 34px; }
+  .masthead { min-height: 65px; }
+  .layout { display: block; padding-block: 25px 36px; }
+  .contents { position: static; max-height: none; margin-bottom: 28px; }
+  .contents ul { margin-left: 0; }
+  .project-heading { display: block; }
+}
+
+@page { size: letter; margin: 0.62in 0.65in; }
+
+@media print {
+  body { color: #172420; background: white; font: 10.5pt/1.38 var(--sans); }
+  .wrap { width: 100%; max-width: none; }
+  .print-button, .contents, .footer, .skip-link, .screen-break { display: none !important; }
+  .hero { color: inherit; background: none; border-bottom: 1pt solid #526960; }
+  .masthead { display: block; min-height: 0; border: 0; }
+  .wordmark { font-size: 12pt; text-decoration: none; }
+  .intro { padding: 5pt 0 10pt; }
+  .intro h1 { font-size: 32pt; line-height: 1; letter-spacing: -0.035em; }
+  .affiliation { color: inherit; font-size: 10pt; margin-top: 6pt; }
+  .biography, .profile-links { margin-top: 5pt; }
+  .layout { display: block; padding: 9pt 0 0; }
+  .draft-note { color: #394943; background: none; border: 0; padding: 0; margin: 0 0 10pt; }
+  .project-group + .project-group { margin-top: 13pt; }
+  .project-group > h2 { font-size: 19pt; margin-bottom: 5pt; }
+  .project, .project:last-child, .project:target { padding-block: 6pt; border-color: #bdc5bf; }
+  .project-heading { display: flex; gap: 4pt 12pt; }
+  .project h3 { font-size: 11pt; }
+  .course { font-size: 9pt; }
+  .project-body h4 { font-size: 10pt; margin-top: 6pt; }
+  .project-body { max-width: none; }
+  h2, h3, h4, .project-heading { break-after: avoid; }
+  figure, .project:has(> .project-heading:only-child) { break-inside: avoid; }
+  figure img { max-height: 3.5in; }
+  .figures { gap: 10pt; margin-top: 8pt; }
+  p, li { widows: 2; orphans: 2; }
+}
