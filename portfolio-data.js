@@ -42,8 +42,13 @@ const portfolio = {
             "The reactive controller expands LiDAR obstacle boundaries to account for vehicle width, then scores open gaps and steers toward the best one. Odometry recorded during a reactive run is resampled into waypoints with heading, curvature, and target speed.",
             "Pure pursuit projects the current pose onto the raceline and chooses a lookahead point based on speed. It interpolates waypoint speeds while a LiDAR time-to-collision check can slow or stop the car. A joystick enable gates motion on hardware."
           ],
-          figureHeading: "Raceline and Race Telemetry",
+          figureHeading: "Hardware Demo and Race Telemetry",
           figures: [
+            {
+              src: "./assets/ece484/hardware-run.jpg",
+              alt: "The F1TENTH car rounds a bend between orange barriers on the indoor track.",
+              caption: "Pure pursuit hardware test. The F1TENTH car rounds a corner on the indoor course."
+            },
             {
               src: "./assets/ece484/raceline-preview.png",
               alt: "Waypoint positions colored by target speed next to a plot of curvature by waypoint index.",
@@ -57,6 +62,7 @@ const portfolio = {
           ],
           results: "In simulation, gap following completed a lap in 64 s and pure pursuit in 58 s, both without wall contact. The team reported first place in the hardware time trial with a 50.3 s result and no penalties.",
           links: [
+            { label: "Pure pursuit hardware demo", href: "https://www.youtube.com/watch?v=8iU1RW6KDh4&source_ve_path=MTc4NDI0" },
             { label: "Final race video", href: "https://www.youtube.com/watch?v=2RBKCkLGlVs" },
             { label: "Team project website", href: "https://safeautonomy-illinois-students.github.io/project-site-invincible_proj/" }
           ]
