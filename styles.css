@@ -135,21 +135,23 @@ a:focus-visible, button:focus-visible { outline: 2px solid currentColor; outline
 
 .project {
   border-top: 1px solid var(--line);
-  padding-block: 14px 16px;
+  padding-block: 25px 32px;
   scroll-margin-top: 20px;
 }
 
 .project:last-child { border-bottom: 1px solid var(--line); }
 .project:target { border-top-color: #457451; }
-.project-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 6px 24px; }
-.project h3 { font-size: 1.12rem; line-height: 1.36; }
+.project-heading { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 6px 24px; }
+.project h3 { font-size: 1.26rem; line-height: 1.36; }
 .course { color: var(--muted); font-size: 0.82rem; white-space: nowrap; }
 .project-body { max-width: 70ch; }
 .project-body h4 { margin-top: 14px; font-size: 0.9rem; }
 .project-body p { white-space: pre-line; }
 .project-body p + p { margin-top: 7px; }
 .figures { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr)); gap: 16px; margin-top: 6px; }
-#autonomous-driving .figures { grid-template-columns: minmax(0, 1fr); }
+.figures--wide { grid-template-columns: minmax(0, 1fr); }
+.figures--featured { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.figures--featured figure:first-child { grid-column: 1 / -1; }
 figure { margin: 0; }
 figure img { display: block; border-radius: 3px; width: 100%; height: auto; max-height: 500px; object-fit: contain; object-position: left; }
 figcaption { margin-top: 4px; color: var(--muted); font-size: 0.82rem; }
@@ -164,6 +166,7 @@ figcaption { margin-top: 4px; color: var(--muted); font-size: 0.82rem; }
   .contents { position: static; max-height: none; margin-bottom: 28px; }
   .contents ul { margin-left: 0; }
   .project-heading { display: block; }
+  .figures--featured { grid-template-columns: minmax(0, 1fr); }
 }
 
 @page { size: letter; margin: 0.62in 0.65in; }
@@ -195,4 +198,51 @@ figcaption { margin-top: 4px; color: var(--muted); font-size: 0.82rem; }
   .figures { gap: 10pt; margin-top: 4pt; }
   .project-body p + p { margin-top: 4pt; }
   p, li { widows: 2; orphans: 2; }
+}
+
+@media print {
+  .project-group > h2 { display: none; }
+  .project-group + .project-group { margin-top: 0; }
+  .project { break-before: page; }
+  .project-group:first-of-type .project:first-of-type { break-before: auto; }
+  .project-heading { display: block; }
+  .project h3 { font-size: 15pt; }
+  .course { margin-top: 2pt; }
+  .figures--wide img { max-height: 2.9in; }
+  .figures--featured figure:first-child img { max-height: 2.25in; }
+  .figures--featured figure:not(:first-child) img { max-height: 1.1in; }
+  .project-links { font-size: 9pt; margin-top: 6pt; }
+}
+
+.figures--showcase { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.figures--showcase figure:first-child,
+.figures--showcase .figure--wide { grid-column: 1 / -1; }
+.figures--showcase figure:first-child { margin-bottom: 5px; }
+.figures--showcase figure:first-child img { max-height: 430px; }
+.figures--showcase figure:first-child figcaption { max-width: 68ch; }
+@media (max-width: 750px) {
+  .figures--showcase { grid-template-columns: minmax(0, 1fr); }
+}
+@media print {
+  .screen-only { display: none !important; }
+  .figures--showcase { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .figures--showcase figure:first-child { grid-column: 1 / -1; margin-bottom: 0; }
+  .figures--showcase figure:first-child img { max-height: 2.2in; }
+  .figures--showcase .figure--wide { grid-column: auto; }
+  .figures--showcase figure:not(:first-child) img { max-height: 1.55in; }
+  #cmos-chip .figures--wide img { max-height: 2in; }
+}
+
+#semiconductor-fab .figures--showcase figure:first-child { grid-column: auto; }
+#semiconductor-fab .figures--showcase figure:nth-child(-n+2) img {
+  height: 380px;
+  object-fit: contain;
+}
+@media (max-width: 750px) {
+  #semiconductor-fab .figures--showcase figure:nth-child(-n+2) img { height: auto; max-height: 450px; }
+}
+@media print {
+  #nmr-nqr .figures--showcase .figure--wide { grid-column: 1 / -1; }
+  #nmr-nqr .figures--showcase .figure--wide img { max-height: 2.25in; }
+  #semiconductor-fab .figures--showcase figure:nth-child(-n+2) img { height: auto; max-height: 2.2in; }
 }

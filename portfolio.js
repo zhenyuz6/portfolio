@@ -42,12 +42,18 @@ function renderProject(project) {
   if (project.figures.length) {
     body.append(element("h4", project.figureHeading || "Figures"));
     const figures = element("div", "", "figures");
-    project.figures.forEach(({ src, alt, caption }) => {
+    if (project.figureLayout) figures.classList.add("figures--" + project.figureLayout);
+    project.figures.forEach(({ src, alt, caption, wide, print }) => {
       const figure = element("figure");
+      if (wide) figure.classList.add("figure--wide");
+      if (print === false) figure.classList.add("screen-only");
       const image = element("img");
       image.src = src;
       image.alt = alt;
-      figure.append(image);
+      const fullImage = link("", src);
+      fullImage.setAttribute("aria-label", "Open full-size image. " + alt);
+      fullImage.append(image);
+      figure.append(fullImage);
       if (caption) figure.append(element("figcaption", caption));
       figures.append(figure);
     });
