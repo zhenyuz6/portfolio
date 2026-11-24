@@ -84,7 +84,14 @@ const portfolio = {
             0,
             3
           ],
-          "diagram": null
+          "diagram": null,
+          "printSupplement": [
+            1,
+            2,
+            4
+          ],
+          "printSupplementTitle": "RF instrumentation & acquisition displays",
+          "printSupplementSummary": "Additional laboratory views document probe matching, instrument readout, and software-based acquisition alongside the pulse-calibration study."
         },
         {
           "id": "cnt",
@@ -342,7 +349,7 @@ const portfolio = {
           "course": "ECE 498JH · Fall 2026",
           "summary": "A language-model workflow connects Transformer implementation and attention benchmarks with mathematical-reasoning post-training, preference optimization, and inference scheduling.",
           "design": [
-            "Qwen3-compatible Transformer components are checked against reference outputs before attention throughput and memory benchmarks. Supervised fine-tuning and GRPO establish the starting point for a controlled DPO/SimPO comparison.",
+            "Qwen3-compatible Transformer components are checked against reference outputs before attention throughput and memory benchmarks. Supervised fine-tuning and GRPO precede a controlled DPO/SimPO comparison; per-step reward and KL traces track the GRPO optimization process.",
             "Shared preference pairs support comparisons of strict GSM8K accuracy, answer format, and paired judge preferences. Serving experiments compare FCFS and SJF scheduling and vary decode passes between scheduler calls."
           ],
           "results": "DPO-B reached 55.80% strict accuracy and matched-rate SimPO reached 55.57%. SimPO used 24.1 GiB peak allocated GPU memory versus DPO-B's 26.9 GiB. Serving tests also exposed a latency trade-off as more decode passes delayed new requests.",
@@ -351,9 +358,24 @@ const portfolio = {
               "src": "./assets/llm/gsm8k-comparison.png",
               "alt": "Strict GSM8K accuracy for the GRPO checkpoint, DPO-B, and SimPO at two learning rates.",
               "caption": "GSM8K evaluation on 1,319 test questions. The higher SimPO learning rate reduced strict accuracy despite improving training-pair ranking."
+            },
+            {
+              "src": "./assets/llm/serving-latency-throughput.png",
+              "alt": "Two plots compare p95 time to first token and decode throughput for one, four, and eight decode passes between scheduler calls.",
+              "caption": "FCFS serving at 0.24 offered requests/s. Increasing decode passes from 1 to 8 raises p95 first-token latency from 1.83 to 4.34 s, while output throughput changes from 36.2 to 37.3 tokens/s. Source: MP3 Checkpoint 1 report."
+            },
+            {
+              "src": "./assets/llm/grpo-training-dynamics.png",
+              "alt": "Logged mean training reward and mean KL over 400 GRPO optimizer steps, with all raw steps and a 25-step trailing average.",
+              "caption": "GRPO training telemetry over 400 updates. The first and last 25-step mean rewards are 0.310 and 0.656. Raw steps remain visible, including a KL spike at update 318. Training reward is distinct from held-out GSM8K accuracy."
             }
           ],
-          "links": [],
+          "links": [
+            {
+              "label": "GRPO training data (CSV)",
+              "href": "./assets/llm/grpo-training-telemetry.csv"
+            }
+          ],
           "figureHeading": "Preference-Tuning Results",
           "figureLayout": "wide",
           "category": "Machine learning systems",
@@ -379,9 +401,21 @@ const portfolio = {
             ]
           ],
           "primary": [
+            0,
+            2,
+            1
+          ],
+          "diagram": "./assets/diagrams/llm-workflow.svg",
+          "printPrimary": [
             0
           ],
-          "diagram": "./assets/diagrams/llm-workflow.svg"
+          "printSupplement": [
+            2,
+            1
+          ],
+          "printSupplementTitle": "Training dynamics & serving trade-offs",
+          "printSupplementSummary": "Raw GRPO training telemetry documents reward and policy drift. A separate FCFS scheduling sweep measures inference throughput and first-token latency.",
+          "printSupplementNote": "The training trace shows higher reward alongside non-monotonic KL, so the raw fluctuations remain visible. In the separate serving experiment, about 3% more output throughput accompanies a 2.37× increase in p95 time to first token."
         },
         {
           "id": "semiconductor-fab",
@@ -462,11 +496,6 @@ const portfolio = {
               "src": "./assets/ece482/roa-schematic-layout.png",
               "alt": "The baseline ring oscillator ROA schematic and physical layout side by side in Cadence Virtuoso.",
               "caption": "Baseline ring oscillator. ROA connects an inverter chain in a loop, with its physical layout shown alongside the schematic."
-            },
-            {
-              "src": "./assets/ece482/mux-selection.png",
-              "alt": "Sampled output voltages for all four select states of the extracted CMOS MUX.",
-              "caption": "Existing HSPICE functional-test results after C-only extraction. State 00 selects ground. High-level samples for states 01, 10, and 11 are approximately 1.76–1.77 V."
             }
           ],
           "links": [],
@@ -512,9 +541,19 @@ const portfolio = {
           "results": "The workflow integrates sensor acquisition, environmental readings, OLED output, UART logging, and classifier training. Reported classification accuracy exceeds 80% for three banana and two apple condition classes, using 50+ training samples and a separate 20+ sample test set.",
           "figures": [
             {
-              "src": "./assets/ece445/analog-front-end.png",
-              "alt": "Gas sensor signal entering a resistor divider, filter capacitor, unity-gain buffer, and STM32 ADC.",
-              "caption": "One sensing channel from the design report. The divider, low-pass filter, and buffer condition the signal before ADC conversion."
+              "src": "./assets/ece445/assembled-board.jpg",
+              "alt": "Assembled custom electronic-nose PCB with four gas sensors, STM32 circuitry, external wiring, and the rear of an OLED module.",
+              "caption": "Assembled prototype. Four gas-sensing elements are mounted on the custom PCB alongside the STM32 acquisition circuitry and external connections."
+            },
+            {
+              "src": "./assets/ece445/pcb-layout.png",
+              "alt": "KiCad physical layout of the electronic-nose PCB, showing four sensor footprints, routed signals, copper fill, MCU circuitry, and connector placements.",
+              "caption": "PCB layout. The four sensor channels connect to signal-conditioning and MCU circuitry, with routed connections and copper fill visible."
+            },
+            {
+              "src": "./assets/ece445/pc-detector-interface.png",
+              "alt": "Fruit Condition Detector Windows interface in its disconnected, ready-to-detect state, showing serial-port selection, four channel legends, and an empty readings table.",
+              "caption": "PC acquisition interface. Serial connection, fruit selection, recording controls, channel plots, and UART readings share one window. This screenshot shows the disconnected, ready-to-detect state."
             }
           ],
           "links": [],
@@ -543,9 +582,20 @@ const portfolio = {
             ]
           ],
           "primary": [
+            0,
+            1,
+            2
+          ],
+          "diagram": "./assets/diagrams/enose-workflow.svg",
+          "printPrimary": [
             0
           ],
-          "diagram": "./assets/diagrams/enose-workflow.svg"
+          "printSupplement": [
+            1,
+            2
+          ],
+          "printSupplementTitle": "PCB layout & acquisition software",
+          "printSupplementSummary": "The board layout and Windows application document the hardware-to-software workflow. The application screenshot shows its initial interface before serial acquisition begins."
         }
       ]
     }

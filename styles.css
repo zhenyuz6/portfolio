@@ -34,3 +34,34 @@
   .evidence--android-video img{height:125pt}
   .evidence--cnt .evidence-item-0 img,.evidence--cnt .evidence-item-1 img{height:140pt}
 }
+/* New evidence stays prominent online; print supplements preserve image size. */
+@media screen{
+  .evidence--electronic-nose{grid-template-columns:1fr 1fr}
+  .evidence--electronic-nose .evidence-item-0 img,.evidence--electronic-nose .evidence-item-1 img{height:330px}
+  .evidence--electronic-nose .evidence-item-2{grid-column:1 / -1}
+  .evidence--electronic-nose .evidence-item-2 img{height:auto;max-height:570px}
+  .evidence--llm{grid-template-columns:1fr}
+}
+@media screen and (max-width:760px){
+  .evidence--electronic-nose{grid-template-columns:1fr}
+  .evidence--electronic-nose .evidence-item-0 img,.evidence--electronic-nose .evidence-item-1 img{height:auto;max-height:420px}
+}
+@media print{
+  .evidence--electronic-nose .evidence-item-0 img{height:185pt}
+  .project--electronic-nose>.design-note{display:none}
+  .supplement-gallery{display:grid;grid-template-columns:1fr;gap:15pt;margin-top:20pt}
+  .supplement-gallery img{width:100%;height:260pt;object-fit:contain;background:white}
+  .supplement-gallery figcaption{font-size:8pt;line-height:1.4}
+  .supplement--nmr-nqr .supplement-gallery{grid-template-columns:1.15fr .85fr;gap:16pt 13pt}
+  .supplement--nmr-nqr .supplement-item-0{grid-column:1;grid-row:1}
+  .supplement--nmr-nqr .supplement-item-1{grid-column:2;grid-row:1}
+  .supplement--nmr-nqr .supplement-item-2{grid-column:1 / span 2;grid-row:2}
+  .supplement--nmr-nqr .supplement-item-0 img,.supplement--nmr-nqr .supplement-item-1 img{height:205pt}
+  .supplement--nmr-nqr .supplement-item-2 img{height:220pt}
+  .supplement--electronic-nose .supplement-item-0 img{height:185pt}
+  .supplement--electronic-nose .supplement-item-1 img{height:300pt}
+  .supplement--llm .supplement-gallery img{height:280pt}
+  .project-supplement .design-note{margin-top:20pt}
+}
+
+@media print{.supplement--llm .supplement-gallery{gap:13pt}.supplement--llm .supplement-gallery img{height:185pt}.supplement--llm .supplement-gallery figcaption{font-size:7.7pt}.supplement--llm .design-note{margin-top:13pt}}

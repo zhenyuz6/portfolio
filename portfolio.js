@@ -9,6 +9,8 @@ const anchor = (label, href, cls) => {
   const a = node('a', label, cls); a.href = href; return a;
 };
 const allProjects = portfolio.groups.flatMap(group => group.projects.map(p => ({...p, group:group.title})));
+let nextPrintPage = 2;
+allProjects.forEach(p => {p.printPage=nextPrintPage;nextPrintPage+=p.printSupplement?.length ? 2 : 1;});
 const dialog = document.querySelector('#image-dialog');
 function figure(data, className='') {
   const f = node('figure', '', className);
@@ -40,7 +42,7 @@ function renderProject(p, i) {
   const metrics=node('dl','','metrics');
   p.metrics.forEach(([value,label])=>{const d=node('div');d.append(node('dt',value),node('dd',label));metrics.append(d);});
   const evidence=node('div','','evidence evidence--'+p.id);
-  p.primary.forEach((index,j)=>evidence.append(figure(p.figures[index],'evidence-item evidence-item-'+j)));
+  p.primary.forEach((index,j)=>evidence.append(figure(p.figures[index],'evidence-item evidence-item-'+j+((p.printPrimary&&!p.printPrimary.includes(index))?' screen-only':''))));
   const methods=node('section','','methods');
   methods.append(node('h3','How it works','eyebrow'));
   const methodcols=node('div','','method-columns');p.design.forEach(t=>methodcols.append(node('p',t)));methods.append(methodcols);
@@ -62,7 +64,18 @@ function renderProject(p, i) {
     const links=node('p','','project-links screen-only');p.links.forEach(l=>links.append(anchor(l.label,l.href)));article.append(links);
   }
   const footer=node('footer','','page-footer print-only');
-  footer.append(anchor('zhenyuz6.github.io/portfolio/#'+p.id,portfolio.url+'#'+p.id),node('span',String(i+2).padStart(2,'0')));article.append(footer);
+  footer.append(anchor('zhenyuz6.github.io/portfolio/#'+p.id,portfolio.url+'#'+p.id),node('span',String(p.printPage).padStart(2,'0')));article.append(footer);
+  return article;
+}
+function renderPrintSupplement(p) {
+  const article=node('article','','project project-supplement supplement--'+p.id+' print-only');
+  article.id=p.id+'-additional';
+  const running=node('div','','page-running');running.append(node('span',portfolio.name+' · Engineering portfolio'),node('span','Additional evidence'));
+  const header=node('header','','project-header');header.append(node('p',p.category,'eyebrow'),node('h2',p.printSupplementTitle),node('p',p.printSupplementSummary,'project-summary'));
+  const images=node('div','','supplement-gallery');p.printSupplement.forEach((idx,j)=>images.append(figure(p.figures[idx],'supplement-item supplement-item-'+j)));
+  article.append(running,header,images);
+  if(p.printSupplementNote){const note=node('aside','','design-note');note.append(node('h3','What the measurements show'),node('p',p.printSupplementNote));article.append(note);}
+  const footer=node('footer','','page-footer');footer.append(anchor('zhenyuz6.github.io/portfolio/#'+p.id,portfolio.url+'#'+p.id),node('span',String(p.printPage+1).padStart(2,'0')));article.append(footer);
   return article;
 }
 document.querySelector('#biography').textContent=portfolio.biography;
@@ -77,9 +90,10 @@ allProjects.forEach((p,i)=>{
   const im=node('img');im.src=p.figures[p.primary[0]].src;im.alt=p.figures[p.primary[0]].alt;im.loading='lazy';
   const text=node('div','','index-card-copy');text.append(node('p',p.category,'eyebrow'),node('h3',p.shortTitle),node('p',p.tags.join(' · '),'card-tags'));
   tile.append(im,text);indexGrid.append(tile);
-  const li=node('li');li.append(anchor(p.shortTitle,'#'+p.id),node('span',String(i+2).padStart(2,'0')));indexList.append(li);
+  const li=node('li');li.append(anchor(p.shortTitle,'#'+p.id),node('span',String(p.printPage).padStart(2,'0')));indexList.append(li);
   const nav=anchor(p.shortTitle,'#'+p.id);nav.dataset.projectId=p.id;contents.append(nav);
   list.append(renderProject(p,i));
+  if(p.printSupplement?.length)list.append(renderPrintSupplement(p));
 });
 printIndex.append(indexList);
 document.querySelector('#print-portfolio').addEventListener('click',async()=>{
