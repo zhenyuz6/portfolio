@@ -3,43 +3,57 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Zhenyu Zhang's electrical engineering research and project portfolio.">
-  <meta name="theme-color" content="#102d2a">
+  <meta name="description" content="Zhenyu Zhang's engineering portfolio: research in RF measurement and nanomaterials, with projects in circuits, embedded systems, autonomy, and language models.">
+  <meta name="theme-color" content="#133e37">
   <title>Engineering Portfolio | Zhenyu Zhang</title>
-  <link rel="stylesheet" href="./styles.css">
-  <script src="./portfolio-data.js" defer></script>
-  <script src="./portfolio.js" defer></script>
+  <link rel="stylesheet" href="./styles.css?v=20261123-editorial">
+  <script src="./portfolio-data.js?v=20261123-editorial" defer></script>
+  <script src="./portfolio.js?v=20261123-editorial" defer></script>
 </head>
 <body>
-  <a class="skip-link" href="#projects">Skip to projects</a>
-
-  <header class="hero" id="top">
-    <div class="wrap">
-      <div class="masthead">
-        <a class="wordmark" id="site-name" href="#top">Zhenyu Zhang</a>
-        <button class="print-button" id="print-portfolio" type="button" hidden>Print / Save as PDF</button>
-      </div>
-      <div class="intro">
-        <h1>Engineering<br class="screen-break"> portfolio</h1>
-        <p id="affiliation" class="affiliation"></p>
-        <p id="biography" class="biography" hidden></p>
-        <p id="profile-links" class="profile-links" hidden></p>
-      </div>
+  <a class="skip-link" href="#projects">Skip to project studies</a>
+  <header class="site-header">
+    <div class="shell header-inner">
+      <a class="wordmark" href="#top">Zhenyu Zhang<span>Electrical engineering</span></a>
+      <nav aria-label="Primary navigation">
+        <a href="#work">Work index</a>
+        <a href="#projects">Project studies</a>
+        <a href="./Zhenyu_Zhang_Engineering_Portfolio.pdf" download>Download PDF</a>
+        <button id="print-portfolio" class="button" type="button">Print / Save PDF</button>
+      </nav>
     </div>
   </header>
-
-  <div class="wrap layout">
-    <nav class="contents" id="contents" aria-label="Project contents" hidden>
-      <h2>Contents</h2>
-    </nav>
-    <main id="projects" tabindex="-1">
-      <p class="draft-note" id="draft-note" hidden>Project descriptions and figures are pending.</p>
-      <noscript><p>Enable JavaScript to view the project list.</p></noscript>
-    </main>
-  </div>
-
-  <footer class="footer">
-    <div class="wrap"><a href="#top">Back to top ↑</a></div>
-  </footer>
+  <main>
+    <section class="cover shell" id="top" aria-labelledby="cover-title">
+      <div class="cover-main">
+        <div class="cover-copy">
+          <p class="eyebrow">Research &amp; engineering portfolio</p>
+          <h1 id="cover-title">From materials<br>to intelligent<br> <em>systems.</em></h1>
+          <p class="cover-name">Zhenyu Zhang</p>
+          <p class="affiliation">Electrical Engineering<br>University of Illinois Urbana-Champaign</p>
+          <p class="cover-bio" id="biography"></p>
+          <div class="cover-actions screen-only"><a class="button" href="#work">Explore the projects</a><a class="text-link" href="mailto:zhenyuz6@illinois.edu">Get in touch</a></div>
+        </div>
+        <div class="cover-visual" aria-label="A selection of project evidence">
+          <a class="cover-photo cover-photo-main" href="#autonomous-driving"><img src="./assets/ece484/hardware-run.jpg" alt="F1TENTH car running between orange track barriers"><span>Autonomy in motion</span></a>
+          <a class="cover-photo" href="#semiconductor-fab"><img src="./assets/ece444/patterned-wafer.jpg" alt="Patterned semiconductor wafer under cleanroom lighting"><span>From wafer to device</span></a>
+          <a class="cover-photo cover-photo-layout" href="#cmos-chip"><img src="./assets/ece482/roa-schematic-layout.png" alt="Ring oscillator schematic and physical layout"><span>From circuit to layout</span></a>
+        </div>
+      </div>
+      <div class="cover-bottom"><p>Design. Build. Measure. Refine.</p><span>Selected work · <span id="edition"></span></span></div>
+      <div class="print-index print-only" id="print-index"><h2>Inside this portfolio</h2></div>
+      <p class="print-contact print-only">zhenyuz6@illinois.edu · <a href="https://zhenyuz6.github.io/portfolio/">zhenyuz6.github.io/portfolio/</a></p>
+    </section>
+    <section class="work-index shell screen-only" id="work" aria-labelledby="index-title">
+      <div class="section-intro"><div><p class="eyebrow">The project collection</p><h2 id="index-title">A view across scales.</h2></div><p>From a material's microstructure to a complete computing system. Select a project to explore its design, evidence, and results.</p></div>
+      <div class="index-grid" id="index-grid"></div>
+    </section>
+    <div class="casebook shell" id="projects" tabindex="-1">
+      <aside class="contents screen-only" id="contents" aria-label="Project navigation"><p class="eyebrow">Project studies</p></aside>
+      <div id="project-list"><noscript><p>Enable JavaScript to view the project studies.</p></noscript></div>
+    </div>
+  </main>
+  <footer class="site-footer screen-only"><div class="shell"><div><p class="eyebrow">Zhenyu Zhang</p><p>Electrical engineering · University of Illinois Urbana-Champaign</p></div><a href="mailto:zhenyuz6@illinois.edu">zhenyuz6@illinois.edu</a><a href="#top">Back to top</a></div></footer>
+  <dialog class="lightbox" id="image-dialog" aria-label="Full-size project image"><button id="close-image" type="button" autofocus>Close image</button><img id="dialog-image" alt=""><p id="dialog-caption"></p><a id="original-image" target="_blank" rel="noopener">Open original image</a></dialog>
 </body>
 </html>

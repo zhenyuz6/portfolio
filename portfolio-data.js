@@ -1,9 +1,18 @@
-// Project content and figure paths. Edit this file to update the portfolio.
+// All project text, metrics and image selections are editable here.
 const portfolio = {
   "name": "Zhenyu Zhang",
   "affiliation": "Electrical Engineering · University of Illinois Urbana-Champaign",
-  "biography": "Electrical engineering projects spanning RF measurement, nanomaterials, circuit design, embedded systems, autonomous vehicles, and language models.",
-  "links": [],
+  "biography": "Electrical engineering at the intersection of physical devices, measurement, and computation. Research and projects connect materials and RF instrumentation with circuits, embedded sensing, autonomy, and language models.",
+  "links": [
+    {
+      "label": "zhenyuz6@illinois.edu",
+      "href": "mailto:zhenyuz6@illinois.edu"
+    },
+    {
+      "label": "GitHub",
+      "href": "https://github.com/zhenyuz6"
+    }
+  ],
   "groups": [
     {
       "id": "research",
@@ -12,10 +21,10 @@ const portfolio = {
         {
           "id": "nmr-nqr",
           "title": "NMR/NQR Instrumentation and Pulse Calibration",
-          "summary": "An experimental RF platform for exciting and measuring crystal samples. The work connects custom probe circuitry and voltage-controlled tuning with instrument automation and pulsed SpinCore acquisition.",
+          "summary": "An RF measurement platform connects a custom probe, electrical tuning, and automated acquisition to investigate crystal-sample responses and calibrate pulsed excitation.",
           "design": [
-            "An induction coil and varactor-based matching network tune the probe electrically. LabVIEW and GPIB automate instrument control, while temperature and magnetic-field settings provide additional experimental variables.",
-            "Nutation measurements sweep pulse width to calibrate spin rotation. The pulsed setup then varies pulse separation and acquisition bandwidth to investigate two-pulse signals and receiver transients."
+            "A custom induction coil and varactor matching network tune the probe electrically. LabVIEW/GPIB automate acquisition, while PID temperature control and magnetic-field settings support comparisons across experimental conditions.",
+            "Nutation sweeps calibrate pulse width; frequency-offset tests investigate how the peak response shifts. Two-pulse experiments vary pulse separation and acquisition bandwidth to distinguish sample behavior from receiver transients."
           ],
           "results": "Nutation measurements calibrated approximately 23 µs and 47 µs pulse widths for 90° and 180° rotations near 29.928 MHz. Two-pulse echo validation remains in progress.",
           "figures": [
@@ -27,43 +36,65 @@ const portfolio = {
             {
               "src": "./assets/nmr/network-analyzer.jpg",
               "alt": "A network analyzer displaying the RF response on a Smith chart.",
-              "caption": "RF tuning. The network analyzer provides a view of the probe response during impedance matching.",
-              "print": false
+              "caption": "RF tuning. The network analyzer provides a view of the probe response during impedance matching."
             },
             {
               "src": "./assets/nmr/lock-in-readout.jpg",
               "alt": "Lock-in amplifiers and a capacitance bridge in the laboratory instrument rack.",
-              "caption": "Measurement instruments. Lock-in amplifiers and a capacitance bridge support the laboratory readout.",
-              "print": false
+              "caption": "Measurement instruments. Lock-in amplifiers and a capacitance bridge support the laboratory readout."
             },
             {
               "src": "./assets/nmr/two-pulse-acquisition.png",
               "alt": "SpinCore two-pulse NMR and NQR interface with 29.928 MHz excitation, 23 and 47 microsecond pulses, and a time-domain acquisition trace.",
-              "caption": "Two-pulse acquisition near 29.928 MHz. The early transient and later signal are being investigated as part of echo validation.",
-              "wide": true
+              "caption": "Two-pulse acquisition near 29.928 MHz. The early transient and later signal are being investigated as part of echo validation."
             },
             {
               "src": "./assets/nmr/labview-acquisition.jpg",
               "alt": "LabVIEW measurement plots displayed on the laboratory computer.",
-              "caption": "Acquisition software. LabVIEW displays the measured response as experiment settings are varied.",
-              "print": false,
-              "wide": true
+              "caption": "Acquisition software. LabVIEW displays the measured response as experiment settings are varied."
             }
           ],
           "links": [],
           "course": "Research · 2024–present",
           "figureHeading": "RF Instrumentation and Acquisition",
-          "figureLayout": "showcase"
+          "figureLayout": "showcase",
+          "category": "RF instrumentation",
+          "shortTitle": "NMR / NQR instrumentation",
+          "tags": [
+            "RF circuits",
+            "LabVIEW / GPIB",
+            "SpinCore"
+          ],
+          "insight": "Pulse calibration and echo validation are separate steps: an early transient cannot by itself establish that an echo has been observed.",
+          "metrics": [
+            [
+              "29.928 MHz",
+              "Excitation frequency"
+            ],
+            [
+              "23 / 47 µs",
+              "Calibrated 90° / 180° pulses"
+            ],
+            [
+              "In progress",
+              "Two-pulse echo validation"
+            ]
+          ],
+          "primary": [
+            0,
+            3
+          ],
+          "diagram": null
         },
         {
           "id": "cnt",
           "title": "3D Printing with Carbon Nanotube Inks",
-          "summary": "From nanotube ink to printed structures, this project connects materials formulation, programmed deposition, microscopy, and electrical testing. A parallel nickel-plating study examines the connections between CNT specimens and metal contacts.",
+          "summary": "CNT ink formulation, programmed deposition, and electrical characterization connect printable nanomaterials to functional structures and metal-contact interfaces.",
           "design": [
-            "SDS/SDOC formulations and rheological measurements guide the ink and printing conditions. Printer-control code adjusts motion for the sample. Dimensional measurements track the printed geometry, and SEM provides a complementary view of CNT microstructure.",
-            "Mass and dimensional measurements track drying and densification. Pulsed nickel deposition then introduces another process variable. Four-probe measurements of the middle section are compared with terminal resistance to examine both the specimen and its end connections."
+            "SDS/SDOC formulations and rheological measurements guide the ink and printing conditions. Sample-dependent motion settings, mass and dimensional measurements, furnace treatment, and SEM connect deposition to the dried structure.",
+            "Pulsed nickel plating explores electrical interfaces. Middle-section four-probe measurements and end-to-end resistance probe different parts of the sample, helping distinguish bulk behavior from the influence of its metal contacts."
           ],
-          "results": "The printing process retained approximately 60% of its printed area after drying and increased density by approximately 20% over baseline. Nickel-plating trials showed increased terminal resistance, prompting further examination of deposition and contact behavior.",
+          "results": "Printing retained approximately 60% of the printed area after drying and increased density about 20% over baseline. Updated measurements on approximately 2.2 cm CNT sections showed a 23–27% reduction in end-to-end resistance between metal contacts after nickel plating.",
           "figures": [
             {
               "src": "./assets/cnt/printing-demo.jpg",
@@ -73,8 +104,7 @@ const portfolio = {
             {
               "src": "./assets/cnt/printed-specimens.jpg",
               "alt": "Two dark CNT specimens on substrates in separate sample dishes.",
-              "caption": "Printed specimens. Samples are prepared for dimensional and electrical characterization.",
-              "print": false
+              "caption": "Printed specimens. Samples are prepared for dimensional and electrical characterization."
             },
             {
               "src": "./assets/cnt/sem-microstructure.jpg",
@@ -84,26 +114,45 @@ const portfolio = {
             {
               "src": "./assets/cnt/electroplating-cell.jpg",
               "alt": "An electroplating cell with electrical leads attached to the sample and electrodes.",
-              "caption": "Electrical interfaces. The plating cell connects the sample and electrodes for pulsed nickel deposition.",
-              "print": false
+              "caption": "Electrical interfaces. The plating cell connects the sample and electrodes for pulsed nickel deposition."
             },
             {
               "src": "./assets/cnt/pulse-configuration.jpg",
               "alt": "The instrument settings for a 15-milliamp charge step and rest sequence.",
-              "caption": "Pulse configuration. A 0.1 s deposition step followed by 9.9 s of rest defines a 1% duty cycle.",
-              "print": false
-            },
-            {
-              "src": "./assets/cnt/terminal-resistance.png",
-              "alt": "Terminal resistance of two CNT samples at zero, twelve, and 26.66 hours of nickel plating.",
-              "caption": "Terminal resistance increased for both samples under the tested 15 mA, 1% duty-cycle plating condition.",
-              "wide": true
+              "caption": "Pulse configuration. A 0.1 s deposition step followed by 9.9 s of rest defines a 1% duty cycle."
             }
           ],
           "links": [],
           "course": "Research · 2025–present",
           "figureHeading": "Printing, Microstructure, and Electrical Interfaces",
-          "figureLayout": "showcase"
+          "figureLayout": "showcase",
+          "category": "Nanomaterials",
+          "shortTitle": "3D printing with CNT inks",
+          "tags": [
+            "Ink formulation",
+            "SEM",
+            "Four-probe testing"
+          ],
+          "insight": "Comparing middle-section four-probe measurements with end-to-end resistance helps distinguish the CNT network response from the influence of its metal contacts.",
+          "metrics": [
+            [
+              "~60%",
+              "Printed area retained after drying"
+            ],
+            [
+              "~20%",
+              "Density increase over baseline"
+            ],
+            [
+              "23–27%",
+              "End-to-end resistance reduction"
+            ]
+          ],
+          "primary": [
+            0,
+            2
+          ],
+          "diagram": "./assets/diagrams/cnt-workflow.svg"
         }
       ]
     },
@@ -115,10 +164,10 @@ const portfolio = {
           "id": "autonomous-driving",
           "title": "F1TENTH Autonomous Time Trial",
           "course": "ECE 484 · Spring 2026",
-          "summary": "A ROS 2 racing stack for a 1:10-scale F1TENTH car. The project compares map-free LiDAR gap following with waypoint-based pure pursuit in simulation and on the physical car.",
+          "summary": "A ROS 2 racing stack for a 1:10-scale car compares reactive LiDAR gap following with waypoint-based pure pursuit, from simulation to a physical time trial.",
           "design": [
-            "The reactive controller expands LiDAR obstacle boundaries to account for vehicle width, then scores open gaps and steers toward the best one. Odometry recorded during a reactive run is resampled into waypoints with heading, curvature, and target speed.",
-            "Pure pursuit projects the current pose onto the raceline and chooses a lookahead point based on speed. It interpolates waypoint speeds while a LiDAR time-to-collision check can slow or stop the car. A joystick enable gates motion on hardware."
+            "Gap following expands obstacle boundaries to account for vehicle width, scores open LiDAR gaps, and selects a steering target. Recorded odometry is resampled into a raceline with heading, curvature, and target speed.",
+            "Pure pursuit projects the pose onto that raceline and uses a speed-dependent lookahead. Interpolated target speeds, LiDAR time-to-collision braking, and a joystick enable connect path tracking to safer hardware operation."
           ],
           "figureHeading": "Hardware Demo and Race Telemetry",
           "figures": [
@@ -153,16 +202,44 @@ const portfolio = {
               "href": "https://safeautonomy-illinois-students.github.io/project-site-invincible_proj/"
             }
           ],
-          "figureLayout": "featured"
+          "figureLayout": "featured",
+          "category": "Autonomous systems",
+          "shortTitle": "F1TENTH autonomous racing",
+          "tags": [
+            "ROS 2",
+            "LiDAR",
+            "Pure pursuit"
+          ],
+          "insight": "A curvature-aware raceline and speed-dependent lookahead connect steering geometry to speed selection; time-to-collision braking provides a separate response to immediate obstacles.",
+          "metrics": [
+            [
+              "50.3 s",
+              "Hardware time trial"
+            ],
+            [
+              "1st place",
+              "Final physical race"
+            ],
+            [
+              "0 penalties",
+              "Final hardware run"
+            ]
+          ],
+          "primary": [
+            0,
+            1,
+            2
+          ],
+          "diagram": null
         },
         {
           "id": "android-video",
           "title": "Real-Time Foreground Segmentation for Android",
           "course": "ECE 420 · Spring 2026",
-          "summary": "An Android camera app isolates a foreground subject and displays its bounding box and binary mask alongside the live preview. The mask can also keep the subject sharp while blurring the background.",
+          "summary": "An Android camera application segments a foreground subject and blurs the background through a hybrid pipeline that combines lightweight image processing with neural refinement.",
           "design": [
-            "OpenCV processes each frame at 320 × 240. It combines motion from MOG2 background subtraction with Lab color contrast and a Gaussian weight centered on the previous detection. The resulting mask provides a bounding box for the candidate foreground.",
-            "A background thread runs PyTorch Lite on a 256 × 256 crop of that region. The preview keeps updating using the latest available mask while inference runs. For background blur, the app uses the mask to copy sharp foreground pixels back onto a Gaussian-blurred frame."
+            "At 320 × 240, MOG2 motion cues, Lab color contrast, and a Gaussian prior locate a candidate foreground region. PyTorch Lite refines a 256 × 256 crop, reducing the area sent to the model.",
+            "Asynchronous latest-frame inference decouples model execution from display updates. The preview reuses the latest mask; compositing copies sharp foreground pixels onto a Gaussian-blurred background."
           ],
           "figureHeading": "On-Device Demo",
           "figures": [
@@ -177,17 +254,44 @@ const portfolio = {
               "caption": "Separate segmentation test. White pixels mark the foreground selected by the refinement model."
             }
           ],
-          "results": "The refined masks scored 0.764–0.897 intersection over union against manual annotations across three test scenarios. Camera shake and changes in lighting remained sources of segmentation errors.",
-          "links": []
+          "results": "CPU-only application frame rate increased from approximately 3–4 to a stable 60 FPS at unchanged device and resolution settings. Refined masks achieved 0.764–0.897 IoU across three annotated scenarios; motion and lighting changes remained limitations.",
+          "links": [],
+          "category": "Embedded vision",
+          "shortTitle": "Real-time Android segmentation",
+          "tags": [
+            "OpenCV",
+            "PyTorch Lite",
+            "CPU optimization"
+          ],
+          "insight": "The 60 FPS result describes the application preview. Updating it independently of neural inference prevents a slow model pass from blocking every displayed frame.",
+          "metrics": [
+            [
+              "3–4 → 60 FPS",
+              "Application frame rate"
+            ],
+            [
+              "0.764–0.897",
+              "IoU across three test scenarios"
+            ],
+            [
+              "CPU only",
+              "On-device processing"
+            ]
+          ],
+          "primary": [
+            0,
+            1
+          ],
+          "diagram": "./assets/diagrams/android-pipeline.svg"
         },
         {
           "id": "fpga-game",
           "title": "Wizard of Wor Arcade on FPGA",
           "course": "ECE 385 · Fall 2025",
-          "summary": "A two-player recreation of Wizard of Wor on the Urbana FPGA board. Players share a USB keyboard to navigate four mazes, fire lasers, and compete for the higher score.",
+          "summary": "A two-player arcade game on an Urbana FPGA board integrates USB keyboard input, four mazes, real-time graphics, collision handling, scoring, and synthesized sound.",
           "design": [
-            "A MicroBlaze soft processor runs the game logic in C. A frame-driven state machine handles level transitions, while tile checks and bounding-box tests resolve wall and laser collisions. The monster pursues the nearest active player using Manhattan distance.",
-            "The software writes positions and attributes to six 32-bit sprite registers over AXI4-Lite. A SystemVerilog pipeline combines maze tiles stored in block RAM with ROM-based sprites at 640 × 480. A fixed priority resolves overlapping sprites. A programmable counter generates square-wave music and sound effects."
+            "A MicroBlaze soft processor runs frame-driven game logic in C. Tile checks and bounding-box tests handle wall and laser collisions; Manhattan distance guides the monster toward the nearest active player.",
+            "Six 32-bit AXI4-Lite sprite registers connect software to a SystemVerilog renderer. Block-RAM maze tiles, ROM sprites, and fixed overlap priority generate 640 × 480 graphics; programmable counters generate square-wave audio."
           ],
           "figureHeading": "Gameplay",
           "figures": [
@@ -203,16 +307,43 @@ const portfolio = {
             }
           ],
           "results": "The board demo ran all four mazes and displayed the final score comparison. The implementation report lists 4,407 LUTs and 3 DSP blocks.",
-          "links": []
+          "links": [],
+          "category": "Digital systems",
+          "shortTitle": "Wizard of Wor on FPGA",
+          "tags": [
+            "MicroBlaze / C",
+            "SystemVerilog",
+            "AXI4-Lite"
+          ],
+          "insight": "Game rules execute in software, while graphics and sound use dedicated hardware paths. The small sprite-register interface keeps their interaction explicit and manageable.",
+          "metrics": [
+            [
+              "4 mazes",
+              "Two-player gameplay"
+            ],
+            [
+              "640 × 480",
+              "Graphics output"
+            ],
+            [
+              "4,407 LUTs",
+              "Reported FPGA utilization"
+            ]
+          ],
+          "primary": [
+            0,
+            1
+          ],
+          "diagram": "./assets/diagrams/fpga-pipeline.svg"
         },
         {
           "id": "llm",
           "title": "Language Model Construction, Training, and Serving",
           "course": "ECE 498JH · Fall 2026",
-          "summary": "A PyTorch language-model workflow spanning Transformer components, attention benchmarks, Qwen3-0.6B post-training, and inference scheduling.",
+          "summary": "A language-model workflow connects Transformer implementation and attention benchmarks with mathematical-reasoning post-training, preference optimization, and inference scheduling.",
           "design": [
-            "Transformer outputs are checked against a reference implementation before benchmarking attention memory use and throughput. Supervised fine-tuning and GRPO provide the starting model for a controlled DPO/SimPO comparison using the same preference pairs.",
-            "SimPO uses length-normalized completion scores and a reward margin. Evaluation checks strict GSM8K accuracy, answer formatting, and paired judge preferences. Serving experiments compare FCFS and SJF scheduling and vary the number of decode passes between scheduler calls."
+            "Qwen3-compatible Transformer components are checked against reference outputs before attention throughput and memory benchmarks. Supervised fine-tuning and GRPO establish the starting point for a controlled DPO/SimPO comparison.",
+            "Shared preference pairs support comparisons of strict GSM8K accuracy, answer format, and paired judge preferences. Serving experiments compare FCFS and SJF scheduling and vary decode passes between scheduler calls."
           ],
           "results": "DPO-B reached 55.80% strict accuracy and matched-rate SimPO reached 55.57%. SimPO used 24.1 GiB peak allocated GPU memory versus DPO-B's 26.9 GiB. Serving tests also exposed a latency trade-off as more decode passes delayed new requests.",
           "figures": [
@@ -224,16 +355,42 @@ const portfolio = {
           ],
           "links": [],
           "figureHeading": "Preference-Tuning Results",
-          "figureLayout": "wide"
+          "figureLayout": "wide",
+          "category": "Machine learning systems",
+          "shortTitle": "Language model development",
+          "tags": [
+            "PyTorch",
+            "Qwen3-0.6B",
+            "H100 NVL"
+          ],
+          "insight": "Improved training-pair ranking did not guarantee better test accuracy. The higher-rate SimPO run makes the need for held-out reasoning evaluation visible.",
+          "metrics": [
+            [
+              "55.80%",
+              "DPO-B strict GSM8K accuracy"
+            ],
+            [
+              "1,319",
+              "GSM8K test questions"
+            ],
+            [
+              "24.1 GiB",
+              "SimPO peak allocated memory"
+            ]
+          ],
+          "primary": [
+            0
+          ],
+          "diagram": "./assets/diagrams/llm-workflow.svg"
         },
         {
           "id": "semiconductor-fab",
           "title": "Semiconductor Fabrication and Device Characterization",
           "course": "ECE 444 · Fall 2026",
-          "summary": "A five-mask cleanroom process connects wafer preparation, device formation, and metallization with electrical testing at a probe station.",
+          "summary": "A five-mask cleanroom sequence translates wafer preparation and patterned device structures into fabricated semiconductor devices and electrical characterization.",
           "design": [
-            "The process combines wafer cleaning, oxidation, photoresist patterning, etching, and dopant diffusion. Each mask defines a different part of the device structures as processing proceeds toward metal contacts.",
-            "Probe-station I–V and C–V measurements connect fabrication to device behavior. Characterization exercises extract diode parameters, BJT current gain, and MOSFET threshold voltage from measured curves."
+            "Wafer cleaning, oxidation, photoresist patterning, etching, and dopant diffusion build device regions before metallization. Each mask contributes a distinct part of the final test structures.",
+            "Probe-station I–V and C–V measurements connect processing to diode and transistor behavior. Characterization exercises extract diode parameters, BJT gain, and MOSFET threshold voltage from measured responses."
           ],
           "results": "The five-mask fabrication sequence was completed and 14 fabricated devices were tested. The device-characterization report includes BJT gain of approximately 135–194 across its measured range.",
           "figures": [
@@ -245,30 +402,56 @@ const portfolio = {
             {
               "src": "./assets/ece444/microscope-inspection.jpg",
               "alt": "Device features and numbered contact pads viewed through the laboratory microscope software.",
-              "caption": "Microscope inspection. Device features and contact pads are examined before electrical testing.",
-              "print": false
+              "caption": "Microscope inspection. Device features and contact pads are examined before electrical testing."
             },
             {
               "src": "./assets/ece444/bjt-current-gain.png",
               "alt": "Measured BJT current gain beta as a function of collector current from the device characterization report.",
-              "caption": "BJT characterization exercise. Current gain β is evaluated across the measured collector-current range.",
-              "wide": true
+              "caption": "BJT characterization exercise. Current gain β is evaluated across the measured collector-current range."
             }
           ],
           "links": [],
           "figureHeading": "Wafer Fabrication and Device Testing",
-          "figureLayout": "showcase"
+          "figureLayout": "showcase",
+          "category": "Device fabrication",
+          "shortTitle": "Cleanroom fabrication",
+          "tags": [
+            "Five-mask process",
+            "Probe station",
+            "I–V / C–V"
+          ],
+          "insight": "The wafer and microscope images show the physical process outcome; electrical curves add a different check by connecting device structures to measured behavior.",
+          "metrics": [
+            [
+              "5 masks",
+              "Cleanroom process"
+            ],
+            [
+              "14 devices",
+              "Fabricated devices tested"
+            ],
+            [
+              "~135–194",
+              "BJT gain in characterization exercise"
+            ]
+          ],
+          "primary": [
+            0,
+            1,
+            2
+          ],
+          "diagram": null
         },
         {
           "id": "cmos-chip",
           "title": "SKY130 CMOS Layout and Test-Chip Design",
           "course": "ECE 482 · Fall 2026",
-          "summary": "Transistor-level design and verification in SKY130, progressing from an AOI321 logic gate to components for a ring-oscillator test chip.",
+          "summary": "Transistor-level SKY130 design progresses from a verified AOI321 gate and extracted MUX to a ring-oscillator test chip for comparing hot-carrier stress waveforms.",
           "design": [
-            "The AOI321 design connects transistor sizing and Euler ordering with Cadence layout, DRC/LVS, and HSPICE timing analysis over 88 valid output transitions. The chip's MUX has also been checked with an extracted netlist that includes parasitic capacitance.",
-            "The ongoing test chip compares three ring-oscillator structures for hot-carrier aging characterization. Programmable loading and an output divider support the design goal of an off-chip frequency at or below 50 MHz."
+            "Transistor sizing and Euler ordering guide AOI321 layout and 88-transition timing analysis. DRC/LVS and parasitic-capacitance extraction connect the drawn layout to functional HSPICE checks of all four MUX select states.",
+            "A 21-stage baseline ring oscillator is selected using inverter-delay estimates and simulated at 768.8 MHz against a 750 MHz ±10% target. Programmable-load and asymmetric-slew structures extend the comparison; an output divider targets ≤50 MHz off chip."
           ],
-          "results": "The AOI321 passed DRC/LVS. The MUX passed LVS and its four selection states were verified after parasitic-capacitance extraction. ROA now has schematic and layout views, with full oscillator-chip integration still in progress.",
+          "results": "AOI321 passed DRC/LVS; the MUX passed LVS and extracted functional checks. The baseline oscillator meets its simulated frequency target. Full chip integration and the output-divider implementation remain in progress.",
           "figures": [
             {
               "src": "./assets/ece482/mux-schematic-layout.png",
@@ -283,24 +466,50 @@ const portfolio = {
             {
               "src": "./assets/ece482/mux-selection.png",
               "alt": "Sampled output voltages for all four select states of the extracted CMOS MUX.",
-              "caption": "Existing HSPICE functional-test results after C-only extraction. State 00 selects ground. High-level samples for states 01, 10, and 11 are approximately 1.76–1.77 V.",
-              "print": false
+              "caption": "Existing HSPICE functional-test results after C-only extraction. State 00 selects ground. High-level samples for states 01, 10, and 11 are approximately 1.76–1.77 V."
             }
           ],
           "links": [],
           "figureHeading": "From Schematic to Layout",
-          "figureLayout": "wide"
+          "figureLayout": "wide",
+          "category": "Integrated circuits",
+          "shortTitle": "SKY130 CMOS test-chip design",
+          "tags": [
+            "Cadence Virtuoso",
+            "HSPICE",
+            "DRC / LVS"
+          ],
+          "insight": "Physical connections, device dimensions, and vias must remain consistent with the schematic throughout layout. Earlier verification reduces the need for late LVS repairs.",
+          "metrics": [
+            [
+              "768.8 MHz",
+              "Baseline RO simulation"
+            ],
+            [
+              "21 stages",
+              "Baseline ring oscillator"
+            ],
+            [
+              "≤50 MHz",
+              "Off-chip output design target"
+            ]
+          ],
+          "primary": [
+            1,
+            0
+          ],
+          "diagram": null
         },
         {
           "id": "electronic-nose",
           "title": "STM32 Electronic Nose for Food Freshness",
           "course": "ECE 445 · Senior Design · Fall 2026",
-          "summary": "A custom sensing PCB and PC analysis workflow for studying food freshness through gas-sensor response patterns.",
+          "summary": "A custom STM32 sensing board and PC analysis workflow use multichannel gas responses to investigate food condition and freshness.",
           "design": [
-            "The analog front end scales and filters sensor signals before buffering them into the STM32 ADC. Firmware uses the internal reference to estimate the ADC supply, reads temperature and humidity over I²C, and provides OLED and UART output.",
-            "PC tools collect sensor records and prepare response features. The classification code uses baseline correction, spike filtering, peak and slope features, and standardized logistic regression. Fruit-group validation checks whether a model transfers across specimens."
+            "A divider, low-pass filter, and unity-gain buffer condition each sensing channel for the ADC. Reference-corrected firmware integrates acquisition with temperature/humidity readings, OLED feedback, and UART reporting.",
+            "PC software logs samples, corrects baselines, filters spikes, and extracts peak and slope features. Standardized logistic regression supports model training and prediction; fruit-group validation examines transfer across specimens."
           ],
-          "results": "Sensor acquisition, environmental readings, OLED output, and UART reporting are implemented. The supplied PC tools extend the workflow to logging, feature extraction, training, and prediction.",
+          "results": "The workflow integrates sensor acquisition, environmental readings, OLED output, UART logging, and classifier training. Reported classification accuracy exceeds 80% for three banana and two apple condition classes, using 50+ training samples and a separate 20+ sample test set.",
           "figures": [
             {
               "src": "./assets/ece445/analog-front-end.png",
@@ -310,9 +519,38 @@ const portfolio = {
           ],
           "links": [],
           "figureHeading": "Analog Front End",
-          "figureLayout": "wide"
+          "figureLayout": "wide",
+          "category": "Embedded sensing",
+          "shortTitle": "STM32 electronic nose",
+          "tags": [
+            "Custom PCB",
+            "STM32",
+            "Feature-based classification"
+          ],
+          "insight": "Baseline correction and repeatable sampling connect the analog hardware to useful features. A separate test set checks prediction beyond the samples used for training.",
+          "metrics": [
+            [
+              ">80%",
+              "Reported classification accuracy"
+            ],
+            [
+              "50+ / 20+",
+              "Training / separate test samples"
+            ],
+            [
+              "3 banana / 2 apple",
+              "Food-condition classes"
+            ]
+          ],
+          "primary": [
+            0
+          ],
+          "diagram": "./assets/diagrams/enose-workflow.svg"
         }
       ]
     }
-  ]
+  ],
+  "edition": "November 2026",
+  "email": "zhenyuz6@illinois.edu",
+  "url": "https://zhenyuz6.github.io/portfolio/"
 };
